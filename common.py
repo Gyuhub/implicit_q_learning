@@ -1,6 +1,6 @@
 import collections
 import os
-from typing import Any, Callable, Dict, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, Optional, Sequence, Tuple, NewType
 
 import flax
 import flax.linen as nn
@@ -17,12 +17,11 @@ def default_init(scale: Optional[float] = jnp.sqrt(2)):
     return nn.initializers.orthogonal(scale)
 
 
-PRNGKey = Any
-Params = flax.core.FrozenDict[str, Any]
-PRNGKey = Any
-Shape = Sequence[int]
-Dtype = Any  # this could be a real type?
-InfoDict = Dict[str, float]
+PRNGKey = NewType('PRNGKey', Any)
+Params = NewType('Params', flax.core.FrozenDict[str, Any])
+Shape = NewType('Shape', Sequence[int])
+Dtype = NewType('Dtype', Any)  # this could be a real type?
+InfoDict = NewType('InfoDict', Dict[str, float])
 
 
 class MLP(nn.Module):
