@@ -13,22 +13,20 @@ If you use this code for your research, please consider citing the paper:
 }
 ```
 
-For a PyTorch reimplementation see https://github.com/rail-berkeley/rlkit/tree/master/examples/iql
-
 ## How to run the code
 
 ### Install dependencies
 
 ```bash
-pip install --upgrade pip
-
-pip install -r requirements.txt
-
-# Installs the wheel compatible with Cuda 11 and cudnn 8.
-pip install --upgrade "jax[cuda]>=0.2.27" -f https://storage.googleapis.com/jax-releases/jax_releases.html
+conda env create -f conda_env.yaml
+conda activate iql
+pip install flax optax
+pip install --upgrade 'jax[cuda12_pip]' #-f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 12
+pip install --upgrade 'jax[cuda11_pip]' #-f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 11
+conda env config vars set LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin:/usr/lib/nvidia
+conda deactivate && conda activate iql
+pip install git+https://github.com/rail-berkeley/d4rl@master#egg=d4rl
 ```
-
-Also, see other configurations for CUDA [here](https://github.com/google/jax#pip-installation-gpu-cuda).
 
 ### Run training
 
