@@ -20,9 +20,9 @@ If you use this code for your research, please consider citing the paper:
 ```bash
 conda env create -f conda_env.yaml
 conda activate iql
-pip install flax optax
-pip install --upgrade 'jax[cuda12_pip]' #-f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 12
-pip install --upgrade 'jax[cuda11_pip]' #-f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 11
+pip install flax optax orbax-checkpoint
+pip install --upgrade 'jax[cuda12_pip]' -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 12
+pip install --upgrade 'jax[cuda11_pip]' -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html # for cuda 11
 conda env config vars set LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin:/usr/lib/nvidia
 conda deactivate && conda activate iql
 pip install git+https://github.com/rail-berkeley/d4rl@master#egg=d4rl
